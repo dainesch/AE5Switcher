@@ -1,0 +1,9 @@
+﻿<Application x:Class="AE5Switcher.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:AE5Switcher"
+             ShutdownMode="OnExplicitShutdown">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>

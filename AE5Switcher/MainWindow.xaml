@@ -1,0 +1,41 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AE5Switcher"
+        xmlns:Properties="clr-namespace:AE5Switcher.Properties" x:Class="AE5Switcher.MainWindow"
+        mc:Ignorable="d"
+        Title="AE5Switcher" Height="323.863" Width="540.635" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="275*"/>
+            <ColumnDefinition Width="116*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Height="44" VerticalAlignment="Top" Grid.ColumnSpan="3" Grid.Row="1">
+            <Button Content="Save" HorizontalAlignment="Left" Margin="432,10,0,0" VerticalAlignment="Top" Width="75" Height="24" Click="Save_CLick"/>
+            <Button Content="Cancel" HorizontalAlignment="Left" Margin="352,10,0,0" VerticalAlignment="Top" Width="75" Height="24" Click="Cancel_Click"/>
+        </Grid>
+        <TextBox x:Name="SBConnectBox" Margin="10,10,9,0" Text="TextBox" IsEnabled="False" Grid.Column="1" Height="23" VerticalAlignment="Top"/>
+        <Label Content="SB Connect Location" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Width="119"/>
+        <Button Content="Browse" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="Browse_Click" Grid.Column="2"/>
+        <Label Content="Speaker volume" HorizontalAlignment="Left" Margin="10,102,0,0" VerticalAlignment="Top" Height="26" Width="95"/>
+        <Label Content="Headphone volume" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" Height="26" Width="114"/>
+        <Slider x:Name="SpeakerSlider" Margin="10,102,11,0" VerticalAlignment="Top" Maximum="100" LargeChange="10" SmallChange="6" Grid.Column="1" Height="26" TickPlacement="BottomRight" TickFrequency="10" ValueChanged="Speaker_Changed"/>
+        <Slider x:Name="HeadphoneSlider" HorizontalAlignment="Left" Margin="10,166,0,0" VerticalAlignment="Top" Width="252" Grid.Column="1" Height="26" LargeChange="10" Maximum="100" SmallChange="5" TickPlacement="BottomRight" TickFrequency="10" ValueChanged="Headphone_Changed"/>
+        <Label x:Name="SpeakerLabel" Content="0 %" Margin="10,102,10,0" VerticalAlignment="Top" Grid.Column="2" Height="26"/>
+        <Label x:Name="HeadPhoneLabel" Content="0 %" HorizontalAlignment="Left" Margin="10,166,0,0" VerticalAlignment="Top" Grid.Column="2" Height="26" Width="95"/>
+        <Label Content="" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Width="128"/>
+        <CheckBox x:Name="SBCloseBox" Content="Close SB Connect after switch" Grid.Column="1" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="SpeakerBox" Grid.Column="1" Margin="10,71,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="252"/>
+        <Label Content="Speaker mode" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top" Height="26" Width="95"/>
+        <Label Content="Headphone mode" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top" Height="26" Width="114"/>
+        <ComboBox x:Name="HeadphoneBox" Grid.Column="1" HorizontalAlignment="Left" Margin="11,139,0,0" VerticalAlignment="Top" Width="251"/>
+        <CheckBox x:Name="StartBox" Content="Start with Windows" Grid.Column="1" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

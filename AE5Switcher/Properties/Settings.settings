@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AE5Switcher.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="SBConnectExe" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Program Files (x86)\Creative\Sound Blaster Connect 2\Creative.SBConnect.exe</Value>
+    </Setting>
+    <Setting Name="VolumeSpeaker" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="VolumeHeadphones" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="CloseSBConnect" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="StartWithWindows" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ModeSpeaker" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Stereo</Value>
+    </Setting>
+    <Setting Name="ModeHeadphones" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Normal</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AE5Switcher", "AE5Switcher\AE5Switcher.csproj", "{06002FA9-0AC9-445E-9E96-ABC23C7E9A10}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AE5Setup", "AE5Setup\AE5Setup.vdproj", "{776E5BE5-149B-46B2-A9D0-BDAEF437CAED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{06002FA9-0AC9-445E-9E96-ABC23C7E9A10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06002FA9-0AC9-445E-9E96-ABC23C7E9A10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06002FA9-0AC9-445E-9E96-ABC23C7E9A10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06002FA9-0AC9-445E-9E96-ABC23C7E9A10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{776E5BE5-149B-46B2-A9D0-BDAEF437CAED}.Debug|Any CPU.ActiveCfg = Debug
+		{776E5BE5-149B-46B2-A9D0-BDAEF437CAED}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6E5A05E6-9550-47EF-97FB-8733CBDFFFA9}
+	EndGlobalSection
+EndGlobal
