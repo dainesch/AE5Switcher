@@ -23,6 +23,7 @@ namespace AE5Switcher
 
         public App()
         {
+
             notifyIcon = new NotifyIcon()
             {
                 ContextMenuStrip = new ContextMenuStrip(),
@@ -31,11 +32,19 @@ namespace AE5Switcher
                 Visible = true
             };
 
-            notifyIcon.ContextMenuStrip.Items.Add("Activate Headphones").Click += (s,e) => {
+            notifyIcon.ContextMenuStrip.Items.Add("Info").Click += (s, e) =>
+            {
+                InfoWindow inf = new InfoWindow();
+                inf.Show();
+            };
+            notifyIcon.ContextMenuStrip.Items.Add(new ToolStripSeparator());
+            notifyIcon.ContextMenuStrip.Items.Add("Activate Headphones").Click += (s, e) =>
+            {
                 currentMode = SpeakerMode.SPEAKER;
                 ChangeMode();
             };
-            notifyIcon.ContextMenuStrip.Items.Add("Activate Speakers").Click += (s, e) => {
+            notifyIcon.ContextMenuStrip.Items.Add("Activate Speakers").Click += (s, e) =>
+            {
                 currentMode = SpeakerMode.HEADPHONES;
                 ChangeMode();
             };
@@ -49,7 +58,7 @@ namespace AE5Switcher
             notifyIcon.Visible = true;
 
             GuessCurrentMode();
-        
+
         }
 
         private void GuessCurrentMode()
@@ -62,7 +71,8 @@ namespace AE5Switcher
             {
                 currentMode = SpeakerMode.SPEAKER;
                 notifyIcon.Icon = AE5Switcher.Properties.Resources.TraySpeaker;
-            } else
+            }
+            else
             {
                 currentMode = SpeakerMode.HEADPHONES;
                 notifyIcon.Icon = AE5Switcher.Properties.Resources.TrayHead;
@@ -75,29 +85,54 @@ namespace AE5Switcher
             if (!File.Exists(AE5Switcher.Properties.Settings.Default.SBConnectExe) || !AE5Switcher.Properties.Settings.Default.SBConnectExe.EndsWith(Constants.EXE_NAME))
             {
                 MessageBoxResult result = System.Windows.MessageBox.Show(
-                    "Could not find the SoundBlaster Connect executable, please check your settings!", "Error", 
-                    MessageBoxButton.OK, 
+                    "Could not find the SoundBlaster Connect executable, please check your settings!", "Error",
+                    MessageBoxButton.OK,
                     MessageBoxImage.Error);
                 return;
             }
 
+            bool success = false;
 
             switch (currentMode)
             {
                 case SpeakerMode.HEADPHONES:    // switch to speaker
                     currentMode = SpeakerMode.SPEAKER;
                     AudioHelper.Instance.SetVolume(0);
-                    SBAutomationHelper.SetOutput(currentMode, (SpeakerType)Enum.Parse(typeof(SpeakerType), AE5Switcher.Properties.Settings.Default.ModeSpeaker));
-                    AudioHelper.Instance.SetVolume(AE5Switcher.Properties.Settings.Default.VolumeSpeaker);
-                    notifyIcon.Icon = AE5Switcher.Properties.Resources.TraySpeaker;
+                    success = SBAutomationHelper.SetOutput(currentMode, (SpeakerType)Enum.Parse(typeof(SpeakerType), AE5Switcher.Properties.Settings.Default.ModeSpeaker));
+                    if (success)
+                    {
+                        AudioHelper.Instance.SetVolume(AE5Switcher.Properties.Settings.Default.VolumeSpeaker);
+                        notifyIcon.Icon = AE5Switcher.Properties.Resources.TraySpeaker;
+                    }
+                    else
+                    {
+                        AudioHelper.Instance.SetVolume(AE5Switcher.Properties.Settings.Default.VolumeHeadphones);
+                        System.Windows.MessageBox.Show(
+                            "Unkown error while switching mode", "Error",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Error);
+                    }
+
 
                     break;
                 case SpeakerMode.SPEAKER:       // switch to headphones
                     currentMode = SpeakerMode.HEADPHONES;
                     AudioHelper.Instance.SetVolume(0);
-                    SBAutomationHelper.SetOutput(currentMode, (SpeakerType)Enum.Parse(typeof(SpeakerType), AE5Switcher.Properties.Settings.Default.ModeHeadphones));
-                    AudioHelper.Instance.SetVolume(AE5Switcher.Properties.Settings.Default.VolumeHeadphones);
-                    notifyIcon.Icon = AE5Switcher.Properties.Resources.TrayHead;
+                    success = SBAutomationHelper.SetOutput(currentMode, (SpeakerType)Enum.Parse(typeof(SpeakerType), AE5Switcher.Properties.Settings.Default.ModeHeadphones));
+                    if (success)
+                    {
+                        AudioHelper.Instance.SetVolume(AE5Switcher.Properties.Settings.Default.VolumeHeadphones);
+                        notifyIcon.Icon = AE5Switcher.Properties.Resources.TrayHead;
+                    }
+                    else
+                    {
+                        AudioHelper.Instance.SetVolume(AE5Switcher.Properties.Settings.Default.VolumeSpeaker);
+                        System.Windows.MessageBox.Show(
+                            "Unkown error while switching mode", "Error",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Error);
+                    }
+
                     break;
                 default:
                     break;
@@ -123,7 +158,7 @@ namespace AE5Switcher
         private void ExitApp(object sender, EventArgs e)
         {
             notifyIcon.Dispose();
-            if (mainWindow!=null && mainWindow.IsVisible)
+            if (mainWindow != null && mainWindow.IsVisible)
             {
                 mainWindow.Close();
             }

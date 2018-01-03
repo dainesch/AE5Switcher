@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,18 +13,32 @@ namespace AE5Switcher
     class SBAutomationHelper
     {
 
+        private static readonly int SEC_WIN_WAIT = 30;
+
         private SBAutomationHelper()
         {
 
         }
 
-
-        public static void SetOutput(SpeakerMode mode, SpeakerType type)
+        public static bool SetOutput(SpeakerMode mode, SpeakerType type)
         {
-            AutoItX.Run(Properties.Settings.Default.SBConnectExe, Properties.Settings.Default.SBConnectExe.Replace(Constants.EXE_NAME,""));
-            AutoItX.WinWaitActive(Constants.WINDOW_TITLE);
+            Task<Boolean> t = Task.Factory.StartNew<Boolean>(() =>
+            {
+                return SetOutputInt(mode, type);
+            });
+            return t.Wait(TimeSpan.FromSeconds(SEC_WIN_WAIT * 2));
+        }
 
-       
+
+
+        private static bool SetOutputInt(SpeakerMode mode, SpeakerType type)
+        {
+            AutoItX.Run(Properties.Settings.Default.SBConnectExe, Properties.Settings.Default.SBConnectExe.Replace(Constants.EXE_NAME, ""));
+            if (AutoItX.WinWaitActive(Constants.WINDOW_TITLE, "", SEC_WIN_WAIT) == 0)
+            {
+                return false;
+            }
+
             Rectangle wPos = AutoItX.WinGetPos(Constants.WINDOW_TITLE);
 
             switch (mode)
@@ -42,7 +57,7 @@ namespace AE5Switcher
                             break;
                     }
 
-                   
+
                     break;
 
                 case SpeakerMode.SPEAKER:
@@ -65,7 +80,7 @@ namespace AE5Switcher
                     break;
             }
 
-            
+
 
             AutoItX.WinClose(Constants.WINDOW_TITLE);
             if (Properties.Settings.Default.CloseSBConnect)
@@ -73,22 +88,40 @@ namespace AE5Switcher
                 AutoItX.ProcessClose(Constants.EXE_NAME);
             }
 
-            
+            return true;
         }
 
         private static void DoClicks(Rectangle wPos, Point type)
         {
+            float scale = GetDisplayScaleFactor(AutoItX.WinGetHandle(Constants.WINDOW_TITLE));  // adapt to dpi
+
             Point orgPos = AutoItX.MouseGetPos();
             // click settings
-            AutoItX.MouseClick("LEFT", wPos.Left + Constants.SETTINGS.X, wPos.Bottom + Constants.SETTINGS.Y, 1, 0);
-
+            AutoItX.MouseClick("LEFT", wPos.Left + (int)(Constants.SETTINGS.X * scale), wPos.Bottom + (int)(Constants.SETTINGS.Y * scale), 1, 0);
             AutoItX.MouseMove(orgPos.X, orgPos.Y, 0);
+
             Thread.Sleep(1000);
-            orgPos = AutoItX.MouseGetPos();
+
 
             // click mode
-            AutoItX.MouseClick("LEFT", wPos.Left + type.X, wPos.Top + type.Y, 1, 0);
+            orgPos = AutoItX.MouseGetPos();
+            AutoItX.MouseClick("LEFT", wPos.Left + (int)(type.X * scale), wPos.Top + (int)(type.Y * scale), 1, 0);
             AutoItX.MouseMove(orgPos.X, orgPos.Y, 0);
+        }
+
+        [DllImport("user32.dll")]
+        static extern int GetDpiForWindow(IntPtr hWnd);
+
+        private static float GetDisplayScaleFactor(IntPtr windowHandle)
+        {
+            try
+            {
+                return GetDpiForWindow(windowHandle) / 96f;
+            }
+            catch
+            {
+                return 1;
+            }
         }
     }
 }

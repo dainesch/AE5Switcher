@@ -33,20 +33,26 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_523F6C9A5F0047F8A5D993CB1428C50C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_550196A6522CCE14C97B33211DE73519"
         "OwnerKey" = "8:_FFFF6DF15327480AA8E3BF59DDFB0F24"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_8CA316A220BC42A3BA61F175ADAF17F1"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_92C5FA8A21B5B4951D51AC26C51ABB40"
+        "OwnerKey" = "8:_FFFF6DF15327480AA8E3BF59DDFB0F24"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_92C5FA8A21B5B4951D51AC26C51ABB40"
-        "OwnerKey" = "8:_FFFF6DF15327480AA8E3BF59DDFB0F24"
+        "MsmKey" = "8:_A08D634DF4ED418B9F57163264153BCC"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -76,12 +82,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_550196A6522CCE14C97B33211DE73519"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_FFFF6DF15327480AA8E3BF59DDFB0F24"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -103,6 +103,12 @@
         "OwnerKey" = "8:_30945DBE950D71CBEE74DEDEB90773CA"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_550196A6522CCE14C97B33211DE73519"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -121,6 +127,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -137,6 +151,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -217,6 +247,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_523F6C9A5F0047F8A5D993CB1428C50C"
+            {
+            "SourcePath" = "8:..\\AE5Switcher\\Licences\\AutoIt-licence.txt"
+            "TargetName" = "8:AutoIt-licence.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_86EA71C79D974B309ED23ED648CC95E1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_550196A6522CCE14C97B33211DE73519"
             {
             "AssemblyRegister" = "3:1"
@@ -248,26 +298,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8CA316A220BC42A3BA61F175ADAF17F1"
-            {
-            "SourcePath" = "8:..\\AE5Switcher\\bin\\Release\\AutoItX3_x64.dll"
-            "TargetName" = "8:AutoItX3_x64.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_031F99BA3140441EB21112520275EC70"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_92C5FA8A21B5B4951D51AC26C51ABB40"
             {
             "AssemblyRegister" = "3:1"
@@ -297,6 +327,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A08D634DF4ED418B9F57163264153BCC"
+            {
+            "SourcePath" = "8:..\\AE5Switcher\\Licences\\AudioSwitcher-licence.txt"
+            "TargetName" = "8:AudioSwitcher-licence.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_86EA71C79D974B309ED23ED648CC95E1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DB97C92A1D75482AAAD40424DB243FFC"
@@ -386,6 +436,17 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_86EA71C79D974B309ED23ED648CC95E1"
+                    {
+                    "Name" = "8:Licences"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_840427DA460B43F3A769265686DB7A36"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
             "{1525181F-901A-416C-8A58-119130FE478E}:_6A86674968964C0B8C643C8EA2A38F9D"
@@ -427,7 +488,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:AE5Switcher"
         "ProductCode" = "8:{8790BDBC-4B1C-4B9B-9B1F-BD113F498DA7}"
-        "PackageCode" = "8:{EBB05AFA-014D-4CC0-9F83-583823109120}"
+        "PackageCode" = "8:{461FCA38-0ED7-441D-B6D1-A2ED8263AE9F}"
         "UpgradeCode" = "8:{FC2DEF1F-95E2-443B-8276-E2DD37A5FF02}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"

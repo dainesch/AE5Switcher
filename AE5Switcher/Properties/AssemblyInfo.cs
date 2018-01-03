@@ -8,7 +8,7 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("AE5Switcher")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Switches between headphones and speakers")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("AE5Switcher")]

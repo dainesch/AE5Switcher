@@ -1,0 +1,41 @@
+﻿<Window x:Class="AE5Switcher.InfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AE5Switcher"
+        mc:Ignorable="d"
+        Title="Info" Height="237.456" Width="470.035" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="10,125,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="440">
+            AutoIt/AutoItX: 
+            <Hyperlink NavigateUri="https://www.autoitscript.com" RequestNavigate="Hyperlink_RequestNavigate">Homepage</Hyperlink>
+            <Hyperlink NavigateUri="https://www.autoitscript.com/autoit3/docs/license.htm" RequestNavigate="Hyperlink_RequestNavigate">Licence</Hyperlink><LineBreak/>
+
+            AudioSwitcher: 
+            <Hyperlink NavigateUri="https://github.com/xenolightning/AudioSwitcher" RequestNavigate="Hyperlink_RequestNavigate">Homepage</Hyperlink>
+            <Hyperlink NavigateUri="https://github.com/xenolightning/AudioSwitcher/blob/master/LICENSE" RequestNavigate="Hyperlink_RequestNavigate">Licence</Hyperlink>
+        </TextBlock>
+        <Label Content="AE5Switcher" Margin="10,0" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Left" Height="53" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="440">
+                        <BulletDecorator>
+      <BulletDecorator.Bullet>
+        <Ellipse Height="5" Width="5" Fill="Black"/>
+      </BulletDecorator.Bullet>
+        <TextBox BorderThickness="0" Text="You can switch between modes by double-clicking the tray icon" IsReadOnly="True" />
+    </BulletDecorator>
+                                    <BulletDecorator>
+      <BulletDecorator.Bullet>
+        <Ellipse Height="5" Width="5" Fill="Black"/>
+      </BulletDecorator.Bullet>
+        <TextBox  BorderThickness="0" Text="The detection which mode is currently active is made by checking the current system volume. The nearest match from the settings determines the mode" MinLines="2" TextWrapping="Wrap" IsReadOnly="True"/>
+    </BulletDecorator>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Center" Margin="10,170,10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="8">
+            <Run Text="Created by dainesch."/>
+             <Hyperlink NavigateUri="https://github.com/dainesch/AE5Switcher" RequestNavigate="Hyperlink_RequestNavigate">Project page</Hyperlink>
+        </TextBlock>
+        <Label Content="Third party libraries" HorizontalAlignment="Center" Margin="10,94,10,0" VerticalAlignment="Top" FontWeight="Bold"/>
+
+    </Grid>
+</Window>
