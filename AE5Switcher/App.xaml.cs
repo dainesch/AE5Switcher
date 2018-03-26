@@ -63,7 +63,7 @@ namespace AE5Switcher
 
         private void GuessCurrentMode()
         {
-            double vol = AudioHelper.Instance.GetVolume();
+            double vol = AudioHelper.GetVolume();
             double head = Math.Abs(vol - AE5Switcher.Properties.Settings.Default.VolumeHeadphones);
             double speaker = Math.Abs(vol - AE5Switcher.Properties.Settings.Default.VolumeSpeaker);
 
@@ -97,16 +97,16 @@ namespace AE5Switcher
             {
                 case SpeakerMode.HEADPHONES:    // switch to speaker
                     currentMode = SpeakerMode.SPEAKER;
-                    AudioHelper.Instance.SetVolume(0);
+                    AudioHelper.SetVolume(0);
                     success = SBAutomationHelper.SetOutput(currentMode, (SpeakerType)Enum.Parse(typeof(SpeakerType), AE5Switcher.Properties.Settings.Default.ModeSpeaker));
                     if (success)
                     {
-                        AudioHelper.Instance.SetVolume(AE5Switcher.Properties.Settings.Default.VolumeSpeaker);
+                        AudioHelper.SetVolume(AE5Switcher.Properties.Settings.Default.VolumeSpeaker);
                         notifyIcon.Icon = AE5Switcher.Properties.Resources.TraySpeaker;
                     }
                     else
                     {
-                        AudioHelper.Instance.SetVolume(AE5Switcher.Properties.Settings.Default.VolumeHeadphones);
+                        AudioHelper.SetVolume(AE5Switcher.Properties.Settings.Default.VolumeHeadphones);
                         System.Windows.MessageBox.Show(
                             "Unkown error while switching mode", "Error",
                             MessageBoxButton.OK,
@@ -117,16 +117,16 @@ namespace AE5Switcher
                     break;
                 case SpeakerMode.SPEAKER:       // switch to headphones
                     currentMode = SpeakerMode.HEADPHONES;
-                    AudioHelper.Instance.SetVolume(0);
+                    AudioHelper.SetVolume(0);
                     success = SBAutomationHelper.SetOutput(currentMode, (SpeakerType)Enum.Parse(typeof(SpeakerType), AE5Switcher.Properties.Settings.Default.ModeHeadphones));
                     if (success)
                     {
-                        AudioHelper.Instance.SetVolume(AE5Switcher.Properties.Settings.Default.VolumeHeadphones);
+                        AudioHelper.SetVolume(AE5Switcher.Properties.Settings.Default.VolumeHeadphones);
                         notifyIcon.Icon = AE5Switcher.Properties.Resources.TrayHead;
                     }
                     else
                     {
-                        AudioHelper.Instance.SetVolume(AE5Switcher.Properties.Settings.Default.VolumeSpeaker);
+                        AudioHelper.SetVolume(AE5Switcher.Properties.Settings.Default.VolumeSpeaker);
                         System.Windows.MessageBox.Show(
                             "Unkown error while switching mode", "Error",
                             MessageBoxButton.OK,

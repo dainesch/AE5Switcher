@@ -10,45 +10,26 @@ namespace AE5Switcher
     class AudioHelper
     {
 
-        private static volatile AudioHelper instance = null;
-        private static object syncRoot = new Object();
-
-        private CoreAudioController controller;
-
-        private AudioHelper() {
-            controller = new CoreAudioController();
-        }
-
-        public double GetVolume()
+        public static double GetVolume()
         {
-            CoreAudioDevice defaultPlaybackDevice = new CoreAudioController().DefaultPlaybackDevice;
-            return defaultPlaybackDevice.Volume;
+            CoreAudioController controller = new CoreAudioController();
+            CoreAudioDevice defaultPlaybackDevice = controller.DefaultPlaybackDevice;
+            double val = defaultPlaybackDevice.Volume;
+            controller.Dispose();
+            System.Console.Out.WriteLine("GetVolume done");
+            return val;
         }
 
-        public void SetVolume(double volume)
+        public static void SetVolume(double volume)
         {
-            CoreAudioDevice defaultPlaybackDevice = new CoreAudioController().DefaultPlaybackDevice;
-            defaultPlaybackDevice.Volume = volume;
+            CoreAudioController controller = new CoreAudioController();
+            CoreAudioDevice defaultPlaybackDevice = controller.DefaultPlaybackDevice;
+            Task<double> t = defaultPlaybackDevice.SetVolumeAsync(volume);
+            t.Wait(Constants.SEC_WIN_WAIT);
+            
+            controller.Dispose();
+            System.Console.Out.WriteLine("SetVolume done");
         }
-
-        public static AudioHelper Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    lock (syncRoot)
-                    {
-                        if (instance == null)
-                            instance = new AudioHelper();
-                    }
-                }
-
-                return instance;
-            }
-        }
-
-
 
     }
 }

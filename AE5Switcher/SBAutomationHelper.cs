@@ -13,7 +13,7 @@ namespace AE5Switcher
     class SBAutomationHelper
     {
 
-        private static readonly int SEC_WIN_WAIT = 30;
+
 
         private SBAutomationHelper()
         {
@@ -26,7 +26,7 @@ namespace AE5Switcher
             {
                 return SetOutputInt(mode, type);
             });
-            return t.Wait(TimeSpan.FromSeconds(SEC_WIN_WAIT * 2));
+            return t.Wait(TimeSpan.FromSeconds(Constants.SEC_WIN_WAIT * 2));
         }
 
 
@@ -34,7 +34,7 @@ namespace AE5Switcher
         private static bool SetOutputInt(SpeakerMode mode, SpeakerType type)
         {
             AutoItX.Run(Properties.Settings.Default.SBConnectExe, Properties.Settings.Default.SBConnectExe.Replace(Constants.EXE_NAME, ""));
-            if (AutoItX.WinWaitActive(Constants.WINDOW_TITLE, "", SEC_WIN_WAIT) == 0)
+            if (AutoItX.WinWaitActive(Constants.WINDOW_TITLE, "", Constants.SEC_WIN_WAIT) == 0)
             {
                 return false;
             }
@@ -88,6 +88,9 @@ namespace AE5Switcher
                 AutoItX.ProcessClose(Constants.EXE_NAME);
             }
 
+            // wait a bit
+            Thread.Sleep(500);
+
             return true;
         }
 
@@ -97,6 +100,7 @@ namespace AE5Switcher
 
             Point orgPos = AutoItX.MouseGetPos();
             // click settings
+            AutoItX.WinActivate(Constants.WINDOW_TITLE);
             AutoItX.MouseClick("LEFT", wPos.Left + (int)(Constants.SETTINGS.X * scale), wPos.Bottom + (int)(Constants.SETTINGS.Y * scale), 1, 0);
             AutoItX.MouseMove(orgPos.X, orgPos.Y, 0);
 
@@ -105,6 +109,7 @@ namespace AE5Switcher
 
             // click mode
             orgPos = AutoItX.MouseGetPos();
+            AutoItX.WinActivate(Constants.WINDOW_TITLE);
             AutoItX.MouseClick("LEFT", wPos.Left + (int)(type.X * scale), wPos.Top + (int)(type.Y * scale), 1, 0);
             AutoItX.MouseMove(orgPos.X, orgPos.Y, 0);
         }

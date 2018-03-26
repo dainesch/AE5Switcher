@@ -20,6 +20,8 @@ namespace AE5Switcher
         public static readonly Point HEADPHONES = new Point(600, 300);
         public static readonly Point HEADPHONES_DIRECT = new Point(725, 300);
 
+        public static readonly int SEC_WIN_WAIT = 30;
+
         private Constants()
         {
 
