@@ -10,6 +10,9 @@ Simple tool to switch modes between speakers and headphones for Creative Sound B
 
 ## Download
 
+* [Version 1.1](https://github.com/dainesch/AE5Switcher/releases/download/v1.1/AE5Setup.msi)
+  * Fix CPU usage on multiple uses
+  * Update AudioSwitcher dependency (hopefully improves random hangs)
 * [Version 1.0](https://github.com/dainesch/AE5Switcher/releases/download/v1.0/AE5Setup.msi)
 
 ## Todo
